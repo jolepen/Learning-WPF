@@ -71,10 +71,14 @@ namespace WpfExample.Views
         private void Item_Selected(object sender, RoutedEventArgs e)
         {
             //ItemSource를 활용한 데이터 바인딩
-            var treeViewItem = sender as TreeViewItem;
-            if (treeViewItem != null)
+            if (sender is TreeViewItem treeViewItem)
             {
                 this.listBox.ItemsSource = treeViewItem.Items;
+
+                if (treeViewItem.Parent is TreeViewItem parentItem)
+                {
+                    this.hierarchyTextBlock.Text = $"{parentItem.Header} > {treeViewItem.Header}";
+                }
             }
         }
 

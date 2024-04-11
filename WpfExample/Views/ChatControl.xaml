@@ -6,5 +6,7 @@
              xmlns:local="clr-namespace:WpfExample.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid/>
+    <Grid>
+        <Label Content="ChatControl" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
 </UserControl>

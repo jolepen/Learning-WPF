@@ -55,10 +55,6 @@ namespace WpfExample.Views
 
         private void Button2_Click(object sender, RoutedEventArgs e)
         {
-            if(btn2.IsChecked == false)
-            {
-
-            }
             SetUserControlToGrid(chat);
         }
     }
