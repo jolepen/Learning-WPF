@@ -177,11 +177,9 @@
                 <TextBlock x:Name="hierarchyTextBlock" VerticalAlignment="Center" Margin="10 0 0 0" FontSize="13"/>
             </Border>
             <ScrollViewer Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                <StackPanel>
-                    <TreeView x:Name="treeView" BorderBrush="Transparent">
-                        <TreeViewItem x:Name="rootTreeViewItem" Header="Let's Learning Wpf" FontSize="13" FontWeight="Bold"/>
-                    </TreeView>
-                </StackPanel>
+                <TreeView x:Name="treeView" BorderBrush="Transparent" VerticalContentAlignment="Stretch">
+                    <TreeViewItem x:Name="rootTreeViewItem" Header="Let's Learning Wpf" FontSize="13" FontWeight="Bold"/>
+                </TreeView>
             </ScrollViewer>
             <GridSplitter Grid.Column="1" Grid.Row="1"
                           Background="LightGray" 
