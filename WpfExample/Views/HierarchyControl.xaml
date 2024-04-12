@@ -132,7 +132,7 @@
                     Margin="20 0 0 15"
                     Background="#FFF3F3F3"
                     HorizontalAlignment="Left">
-                <TextBox>
+                <TextBox KeyDown="TextBox_KeyDown">
                     <TextBox.Style>
                         <Style TargetType="{x:Type TextBox}">
                             <Style.Resources>

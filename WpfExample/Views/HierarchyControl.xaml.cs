@@ -95,13 +95,22 @@ namespace WpfExample.Views
 
         private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if( sender is Grid mainGrid)
+            if (sender is Grid mainGrid)
             {
                 double gridWidth = mainGrid.ActualWidth;
 
                 double minColumnWidth = gridWidth * 0.2;
 
                 mainGrid.ColumnDefinitions[2].MinWidth = minColumnWidth;
+            }
+        }
+
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                TextBox textBox = (TextBox)sender;
+                MessageBox.Show("Entered.");
             }
         }
     }
