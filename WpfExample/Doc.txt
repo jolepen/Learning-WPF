@@ -1,8 +1,29 @@
+- WPF 레이아웃
+    · 한번에 여러개의 레이아웃을 배치할 수 없다.
+    · 레이아웃 내 레이아웃을 배치하여 사용 가능하다.
+    1) Grid
+        · Table 형태(Column & Row) 
+        · ColumnDefinitions, RowDefinitions
+    2) StackPanel
+        · Stack 형태
+        · Orientation 속성으로 수평/수직 정렬 설정 (Horizontal/Vertical)
+        · FlowDirectio 속성으로 방향 설정 (RightToLeft/LeftToRight)
+    3) WrapPanel
+        · StackPanel과 기능상 비슷하나 화면 내 여유공간이 부족할 경우 다음줄에 배치
+    4) DockPanel
+        · Panel 내에 Content를 순차적으로 고정
+        · 하위 Content에서 DockPanel.Dock 속성으로 위치를 지정 (Top/Bottom/Left/Right)
+    5)Canvas
+        · 절대값으로 좌표를 지정
+        · 하위 Content에서 Canvas.Top/Canvas.Bottom/Canvas.Left/Canvas.Right 속성으로 Canvas 내부 위치를 지정가능
+
+
 - 컨트롤의 템플릿을 정의하는 방법
+    · Template을 직접 정의하여 사용할 수도 있고, Style을 사용해 Style 내에서 Template를 정의해 사용할 수도 있다.
+      Style은 BasedOn 속성을 이용해 상속을 받아 사용할 수 있어 기본 설정한 Style 이외의 추가적인 Style를 설정할때에 유용하다.
     1) 리소스 등록
     2) 인라인 사용
-  · Template을 직접 정의하여 사용할 수도 있고, Style을 사용해 Style 내에서 Template를 정의해 사용할 수도 있다.
-    Style은 BasedOn 속성을 이용해 상속을 받아 사용할 수 있어 기본 설정한 Style 이외의 추가적인 Style를 설정할때에 유용하다.
+
               
 - 컨텐트의 표시 방법
     1) ContentPresenter : CotnentControl 상속
@@ -22,4 +43,7 @@
 -  상위 컨트롤의 속성정보를 x:Name 정보 없이 가져오기 
     1) "{Binding RelativeSource={RelativeSource AncestorType={x:Type ToggleButton}}, Path=Foreground}"
 
-
+- Resource에 전역 변수 등록하여 사용 가능
+    1) namespace 추가 : xmlns:system="clr-namespace:System;assembly=mscorlib"
+    2) 리소스 등록 : <system:Double x:Key="hierarchyMinWith">240</system:Double>
+    3) 변수 사용 : MinWidth="{StaticResource hierarchyMinWith}"

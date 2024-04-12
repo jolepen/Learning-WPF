@@ -28,8 +28,8 @@ namespace WpfExample.Views
 
             HierarchyList =
             [
-                CreateHirarchyInfo("성춘향", "사원", "온라인", "AAA부"),
-                CreateHirarchyInfo("홍길동", "대리", "오프라인", "AAA부"),
+                CreateHirarchyInfo("성춘향", "사원", "온라인", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA부"),
+                CreateHirarchyInfo("홍길동", "대리", "오프라인", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA부"),
                 CreateHirarchyInfo("심청이", "과장", "온라인", "BBB부"),
                 CreateHirarchyInfo("이도령", "차장", "오프라인", "BBB부"),
                 CreateHirarchyInfo("이몽룡", "부장", "온라인", "CCC부"),
@@ -92,8 +92,19 @@ namespace WpfExample.Views
                 Status = status
             };
         }
-    }
 
+        private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if( sender is Grid mainGrid)
+            {
+                double gridWidth = mainGrid.ActualWidth;
+
+                double minColumnWidth = gridWidth * 0.2;
+
+                mainGrid.ColumnDefinitions[2].MinWidth = minColumnWidth;
+            }
+        }
+    }
 
     public class HierarchyInfo
     {
