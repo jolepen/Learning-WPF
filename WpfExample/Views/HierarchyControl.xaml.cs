@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -36,7 +37,14 @@ namespace WpfExample.Views
                 CreateHirarchyInfo("최두목", "이사", "오프라인", "CCC부")
             ];
 
-            var customTreeViewItemStyle = this.Resources["CustomTreeViewItem"];
+            this.rootTreeViewItem.Selected += Item_Selected;
+            this.FetchTreeView();
+        }
+
+        private void FetchTreeView()
+        {
+            this.rootTreeViewItem.Items.Clear();
+            this.listBox.ItemsSource = null;
 
             foreach (HierarchyInfo info in this.HierarchyList)
             {
@@ -54,7 +62,7 @@ namespace WpfExample.Views
                 if (!isHeaderExists)
                 {
                     TreeViewItem newItem = new TreeViewItem();
-                    newItem.Style = customTreeViewItemStyle as Style;
+                    newItem.Style = (Style)this.Resources["CustomTreeViewItem"];
                     newItem.Header = info.Location;
                     newItem.Items.Add(info);
 
@@ -64,21 +72,22 @@ namespace WpfExample.Views
 
             foreach (TreeViewItem item in this.rootTreeViewItem.Items)
             {
-                item.Selected += Item_Selected;
+                this.BindList(item);
             }
         }
 
-        private void Item_Selected(object sender, RoutedEventArgs e)
+        private void BindList(TreeViewItem treeViewItem)
         {
             //ItemSource를 활용한 데이터 바인딩
-            if (sender is TreeViewItem treeViewItem)
+            if (treeViewItem.Parent is TreeViewItem parentItem)
             {
+                this.hierarchyTextBlock.Text = $"{parentItem.Header} > {treeViewItem.Header}";
                 this.listBox.ItemsSource = treeViewItem.Items;
-
-                if (treeViewItem.Parent is TreeViewItem parentItem)
-                {
-                    this.hierarchyTextBlock.Text = $"{parentItem.Header} > {treeViewItem.Header}";
-                }
+            }
+            else
+            {
+                this.hierarchyTextBlock.Text = $"{treeViewItem.Header}";
+                this.listBox.ItemsSource = this.HierarchyList;
             }
         }
 
@@ -91,6 +100,14 @@ namespace WpfExample.Views
                 Position = position,
                 Status = status
             };
+        }
+
+        private void Item_Selected(object sender, RoutedEventArgs e)
+        {
+            if (e.Source is TreeViewItem treeViewItem)
+            {
+                this.BindList(treeViewItem);
+            }
         }
 
         private void Grid_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -107,11 +124,45 @@ namespace WpfExample.Views
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
+            this.hierarchyTextBlock.Text = string.Empty;
+
             if (e.Key == Key.Return)
             {
-                TextBox textBox = (TextBox)sender;
-                MessageBox.Show("Entered.");
+                List<HierarchyInfo> list = new List<HierarchyInfo>();
+                foreach (TreeViewItem item in this.rootTreeViewItem.Items)
+                {
+                    foreach (HierarchyInfo hierarchyInfo in item.Items)
+                    {
+                        var textBox = (TextBox)sender;
+
+                        if (hierarchyInfo.Name.Contains(textBox.Text))
+                        {
+                            list.Add(hierarchyInfo);
+                        }
+                    }
+                }
+
+                this.listBox.ItemsSource = list;
             }
+        }
+
+        private int locCount = 1;
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            this.HierarchyList.Add(CreateHirarchyInfo("AddTest", "Test", "오프라인", $"{locCount}부"));
+            this.FetchTreeView();
+            locCount++;
+        }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            int lastIndex = this.HierarchyList.Count - 1;
+
+            if (lastIndex > -1)
+            {
+                this.HierarchyList.RemoveAt(lastIndex);
+            }
+            this.FetchTreeView();
         }
     }
 

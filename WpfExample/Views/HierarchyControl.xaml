@@ -1,9 +1,9 @@
-﻿<UserControl x:Name="userControl" x:Class="WpfExample.Views.HierarchyControl"
+﻿<UserControl x:Name="userControl" 
+             x:Class="WpfExample.Views.HierarchyControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WpfExample.Views"
              xmlns:helper="clr-namespace:WpfExample.Helpers"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
@@ -14,6 +14,9 @@
         <system:Double x:Key="HierarchyWidth">300</system:Double>
         <helper:WidthConverter x:Key="WidthConverter"/>
 
+        <Style x:Key="CustomButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Width" Value="40" />
+        </Style>
         <Style x:Key="CustomHierarchyToggleButtonStyle" TargetType="{x:Type ToggleButton}">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
@@ -173,12 +176,21 @@
                     </TextBox.Style>
                 </TextBox>
             </Border>
-            <Border Grid.Column="3" Grid.Row="0" Margin="0 0 0 15">
-                <TextBlock x:Name="hierarchyTextBlock" VerticalAlignment="Center" Margin="10 0 0 0" FontSize="13"/>
-            </Border>
+            <Grid Grid.Column="3" Grid.Row="0" Margin="0 0 0 15">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Border>
+                    <TextBlock x:Name="hierarchyTextBlock" VerticalAlignment="Center" Margin="10 0 0 0" FontSize="13"/>
+                </Border>
+                <Button Grid.Column="1" Content="Add" Margin="0 0 10 0" Style="{StaticResource CustomButtonStyle}" Click="ButtonAdd_Click"/>
+                <Button Grid.Column="2" Content="Delete" Margin="0 0 10 0" Style="{StaticResource CustomButtonStyle}" Click="ButtonDelete_Click"/>
+            </Grid>
             <ScrollViewer Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Auto">
-                <TreeView x:Name="treeView" BorderBrush="Transparent" VerticalContentAlignment="Stretch">
-                    <TreeViewItem x:Name="rootTreeViewItem" Header="Let's Learning Wpf" FontSize="13" FontWeight="Bold"/>
+                <TreeView  x:Name="treeView" BorderBrush="Transparent" VerticalContentAlignment="Stretch" Background="Transparent">
+                    <TreeViewItem x:Name="rootTreeViewItem" Header="Hierarchy..." FontSize="13" FontWeight="Bold" IsExpanded="True"/>
                 </TreeView>
             </ScrollViewer>
             <GridSplitter Grid.Column="1" Grid.Row="1"

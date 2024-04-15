@@ -3,7 +3,7 @@
     · 레이아웃 내 레이아웃을 배치하여 사용 가능하다.
     1) Grid
         · Table 형태(Column & Row) 
-        · ColumnDefinitions, RowDefinitions
+        · RowDefinitions, ColumnDefinitions를 통해 열과 행을 정의하고, 비율에 따라 배분할 수 있다.
     2) StackPanel
         · Stack 형태
         · Orientation 속성으로 수평/수직 정렬 설정 (Horizontal/Vertical)

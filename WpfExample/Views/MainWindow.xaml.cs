@@ -16,6 +16,7 @@ namespace WpfExample.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        private LayoutSampleControl layoutSample = new();
         private HierarchyControl hierarchy = new();
         private ChatControl chat = new();
 
@@ -25,7 +26,7 @@ namespace WpfExample.Views
         {
             InitializeComponent();
 
-            users.AddRange([hierarchy, chat]);
+            users.AddRange([hierarchy, chat, layoutSample]);
         }
 
         private void SetUserControlToGrid(UserControl userControl)
@@ -48,12 +49,17 @@ namespace WpfExample.Views
             Grid.SetColumn(userControl, 1);
         }
 
-        private void Button1_Click(object sender, RoutedEventArgs e)
+        private void ButtonLayoutSample_Click(object sender, RoutedEventArgs e)
+        {
+            SetUserControlToGrid(layoutSample);
+        }
+
+        private void ButtonHierarchy_Click(object sender, RoutedEventArgs e)
         {
             SetUserControlToGrid(hierarchy);
         }
 
-        private void Button2_Click(object sender, RoutedEventArgs e)
+        private void ButtonChat_Click(object sender, RoutedEventArgs e)
         {
             SetUserControlToGrid(chat);
         }

@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\HierarchyControl.xaml.cs~RF145f09c.TMP" />
+    <None Remove="Views\HierarchyControl.xaml.cs~RF4825e8.TMP" />
     <None Remove="Views\MainWindow.xaml~RF1d71d1a.TMP" />
   </ItemGroup>
 
