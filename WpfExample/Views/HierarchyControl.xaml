@@ -227,7 +227,9 @@
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type ListBox}">
-                                    <ItemsPresenter/>
+                                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                        <ItemsPresenter/>
+                                    </ScrollViewer>
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
