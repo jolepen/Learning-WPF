@@ -4,20 +4,39 @@
     1) Grid
         · Table 형태(Column & Row) 
         · RowDefinitions, ColumnDefinitions를 통해 열과 행을 정의하고, 비율에 따라 배분할 수 있다.
+
     2) StackPanel
         · Stack 형태
         · Orientation 속성으로 수평/수직 정렬 설정 (Horizontal/Vertical)
-        · FlowDirectio 속성으로 방향 설정 (RightToLeft/LeftToRight)
+        · FlowDirection 속성으로 방향 설정 (RightToLeft/LeftToRight)
+
     3) WrapPanel
         · StackPanel과 기능상 비슷하나 화면 내 여유공간이 부족할 경우 다음줄에 배치
+
     4) DockPanel
         · Panel 내에 Content를 순차적으로 고정
         · 하위 Content에서 DockPanel.Dock 속성으로 위치를 지정 (Top/Bottom/Left/Right)
-    5)Canvas
+
+    5) Canvas
         · 절대값으로 좌표를 지정
         · 하위 Content에서 Canvas.Top/Canvas.Bottom/Canvas.Left/Canvas.Right 속성으로 Canvas 내부 위치를 지정가능
 
 
+- WPF 버튼
+    1) Button
+        · 주요 속성 : IsMouseOver, IsPressed, IsEnable
+
+    2) Toggle Button
+        · On/Off 버튼
+        · 주요 속성 : IsMouseOver, IsPressed, IsChecked, IsEnable
+
+    3) Check Button
+        · Toggle Button을 상속받아 사용되는 On/Off 버튼
+        · 같은 그룹 내 다중 선택 가능
+
+    4) Radio Button
+        · Toggle Button을 상속받아 사용되는 On/Off 버튼
+        · 같은 그룹 내 다중 선택 불가능(한가지 선택만 가능)
 - 컨트롤의 템플릿을 정의하는 방법
     · Template을 직접 정의하여 사용할 수도 있고, Style을 사용해 Style 내에서 Template를 정의해 사용할 수도 있다.
       Style은 BasedOn 속성을 이용해 상속을 받아 사용할 수 있어 기본 설정한 Style 이외의 추가적인 Style를 설정할때에 유용하다.

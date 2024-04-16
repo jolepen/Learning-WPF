@@ -61,9 +61,11 @@ namespace WpfExample.Views
 
                 if (!isHeaderExists)
                 {
-                    TreeViewItem newItem = new TreeViewItem();
-                    newItem.Style = (Style)this.Resources["CustomTreeViewItem"];
-                    newItem.Header = info.Location;
+                    TreeViewItem newItem = new()
+                    {
+                        Style = (Style)this.Resources["CustomTreeViewItem"],
+                        Header = info.Location
+                    };
                     newItem.Items.Add(info);
 
                     this.rootTreeViewItem.Items.Add(newItem);
@@ -128,7 +130,7 @@ namespace WpfExample.Views
 
             if (e.Key == Key.Return)
             {
-                List<HierarchyInfo> list = new List<HierarchyInfo>();
+                List<HierarchyInfo> list = [];
                 foreach (TreeViewItem item in this.rootTreeViewItem.Items)
                 {
                     foreach (HierarchyInfo hierarchyInfo in item.Items)

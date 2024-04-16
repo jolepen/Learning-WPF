@@ -16,11 +16,11 @@ namespace WpfExample.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        private LayoutSampleControl layoutSample = new();
-        private HierarchyControl hierarchy = new();
-        private ChatControl chat = new();
+        private readonly LayoutSampleControl layoutSample = new();
+        private readonly HierarchyControl hierarchy = new();
+        private readonly ChatControl chat = new();
 
-        private List<UserControl> users = new();
+        private readonly List<UserControl> users = [];
 
         public MainWindow()
         {

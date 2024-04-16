@@ -12,7 +12,7 @@
     <UserControl.Resources>
         <!--해당 userControl 변수를 resource에 선언해서 재사용 할 수 있다.-->
         <system:Double x:Key="HierarchyWidth">300</system:Double>
-        <helper:WidthConverter x:Key="WidthConverter"/>
+        <helper:SizeConverter x:Key="SizeConverter"/>
 
         <Style x:Key="CustomButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Width" Value="40" />
@@ -130,7 +130,7 @@
             </Grid.RowDefinitions>
             <Border Grid.Column="0" 
                     Grid.Row="0" 
-                    Width="{Binding Source={StaticResource HierarchyWidth}, Converter={StaticResource WidthConverter}, ConverterParameter=0.9}"
+                    Width="{Binding Source={StaticResource HierarchyWidth}, Converter={StaticResource SizeConverter}, ConverterParameter=0.9}"
                     Height="30" 
                     Margin="20 0 0 15"
                     Background="#FFF3F3F3"
