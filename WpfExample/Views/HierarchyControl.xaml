@@ -6,14 +6,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:helper="clr-namespace:WpfExample.Helpers"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:WpfExample.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
-        <!--해당 userControl 변수를 resource에 선언해서 재사용 할 수 있다.-->
         <system:Double x:Key="HierarchyWidth">300</system:Double>
         <helper:SizeConverter x:Key="SizeConverter"/>
-
         <Style x:Key="CustomButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Width" Value="40" />
         </Style>
@@ -69,7 +68,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
         <Style x:Key="CustomTreeViewItem" TargetType="{x:Type TreeViewItem}">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
@@ -207,7 +205,7 @@
                     <Style TargetType="{x:Type ListBox}">
                         <Setter Property="ItemTemplate">
                             <Setter.Value>
-                                <DataTemplate>
+                                <DataTemplate DataType="{x:Type local:HierarchyInfo}">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto"/>

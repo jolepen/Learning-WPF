@@ -1,68 +1,124 @@
 - WPF 레이아웃
     · 한번에 여러개의 레이아웃을 배치할 수 없다.
     · 레이아웃 내 레이아웃을 배치하여 사용 가능하다.
+
     1) Grid
-        · Table 형태(Column & Row) 
-        · RowDefinitions, ColumnDefinitions를 통해 열과 행을 정의하고, 비율에 따라 배분할 수 있다.
+        Table 형태(Column & Row) 
+        RowDefinitions, ColumnDefinitions를 통해 열과 행을 정의하고, 비율에 따라 배분할 수 있다.
 
     2) StackPanel
-        · Stack 형태
-        · Orientation 속성으로 수평/수직 정렬 설정 (Horizontal/Vertical)
-        · FlowDirection 속성으로 방향 설정 (RightToLeft/LeftToRight)
+        Stack 형태
+        Orientation 속성으로 수평/수직 정렬 설정 (Horizontal/Vertical)
+        FlowDirection 속성으로 방향 설정 (RightToLeft/LeftToRight)
 
     3) WrapPanel
-        · StackPanel과 기능상 비슷하나 화면 내 여유공간이 부족할 경우 다음줄에 배치
+        StackPanel과 기능상 비슷하나 화면 내 여유공간이 부족할 경우 다음줄에 배치
 
     4) DockPanel
-        · Panel 내에 Content를 순차적으로 고정
-        · 하위 Content에서 DockPanel.Dock 속성으로 위치를 지정 (Top/Bottom/Left/Right)
+        Panel 내에 Content를 순차적으로 고정
+        하위 Content에서 DockPanel.Dock 속성으로 위치를 지정 (Top/Bottom/Left/Right)
 
     5) Canvas
-        · 절대값으로 좌표를 지정
-        · 하위 Content에서 Canvas.Top/Canvas.Bottom/Canvas.Left/Canvas.Right 속성으로 Canvas 내부 위치를 지정가능
+        절대값으로 좌표를 지정
+        하위 Content에서 Canvas.Top/Canvas.Bottom/Canvas.Left/Canvas.Right 속성으로 Canvas 내부 위치를 지정가능
 
 
 - WPF 버튼
     1) Button
-        · 주요 속성 : IsMouseOver, IsPressed, IsEnable
+        주요 속성 : IsMouseOver, IsPressed, IsEnable
 
     2) Toggle Button
-        · On/Off 버튼
-        · 주요 속성 : IsMouseOver, IsPressed, IsChecked, IsEnable
+        On/Off 버튼
+        주요 속성 : IsMouseOver, IsPressed, IsChecked, IsEnable
 
-    3) Check Button
-        · Toggle Button을 상속받아 사용되는 On/Off 버튼
-        · 같은 그룹 내 다중 선택 가능
+    3) Check Box
+        Toggle Button을 상속받아 사용되는 On/Off 버튼
+        같은 그룹 내 다중 선택 가능
 
     4) Radio Button
-        · Toggle Button을 상속받아 사용되는 On/Off 버튼
-        · 같은 그룹 내 다중 선택 불가능(한가지 선택만 가능)
-- 컨트롤의 템플릿을 정의하는 방법
-    · Template을 직접 정의하여 사용할 수도 있고, Style을 사용해 Style 내에서 Template를 정의해 사용할 수도 있다.
-      Style은 BasedOn 속성을 이용해 상속을 받아 사용할 수 있어 기본 설정한 Style 이외의 추가적인 Style를 설정할때에 유용하다.
-    1) 리소스 등록
-    2) 인라인 사용
+        Toggle Button을 상속받아 사용되는 On/Off 버튼
+        같은 그룹 내 다중 선택 불가능(한가지 선택만 가능)
 
-              
-- 컨텐트의 표시 방법
-    1) ContentPresenter : CotnentControl 상속
-    2) ItemsPresenter : ItemsControl 상속
+- WPF 텍스트
+    1) TextBlock
+        텍스트 출력
+        텍스트를 사용할 수 있는 가장 작은 단위 요소
+        FrameworkElement로부터 직접 파생됨 (Control이 아님)
+
+    2) TextBox
+        텍스트 출력 또는 편집할 수 있는 Control
+
+    3) Label
+        텍스트 출력
+        ContentControl로부터 파생되어 텍스트 뿐만 아니라 Template, Data 등을 Content를 통해 할당 가능
+
+    4) ComboBox
+        ComboBoxItem으로 구성된 텍스트 컬렉션
+        
+
+- WPF 리소스
+    리소스는 x:Key 속성으로 정의된 클래스를 참조해 데이터 재사용성을 높힌다.
+    어플리케이션 전역 또는 컨트롤 지역에서 모두 사용 가능하다.
+    xaml에서 사용시 태그 확장 문법을 사용한다.
+    Code-Behind에서도 Resource에 정의된 값을 x:Key값을 통해 참조할 수 있다.
+    클래스를 정의해 참조할 수 있다.
+
+    1) Static Resource 
+        컴파일 시에 로드되어 참조가 이루어지고 리소스의 변경을 관리하지 않는다.
+        {StaticResource MyResource}
+
+    2) Dynamic Resource
+        값이 사용될 때 마다 변경여부의 확인이 이루어진다.
+        런타임 시에 리소스의 값을 변경해서 사용하고 싶은 경우 주로 사용한다.
+        {DynamicResource MyResource}
+
+    3) Resource에 전역 변수 등록하여 사용하는 방법
+        namespace 추가 : xmlns:system="clr-namespace:System;assembly=mscorlib"
+        리소스 등록 : <system:Double x:Key="hierarchyMinWith">240</system:Double>
+        변수 사용 : MinWidth="{StaticResource hierarchyMinWith}"
+
+- WPF 스타일
+    컨트롤에 속성 내용을 변경한다. (스타일은 단순히 기존 컨트롤에 속성 변경내용을 변경하고, 컨트롤 템플릿은 전체 컨트롤의 시각적 모양을 다시 설정할 수 있다.)
+    템플릿을 정의하거나 설정한다.
+    스타일은 BasedOn 속성을 이용해 상속을 받아 사용할 수 있어 기본 설정한 Style 이외의 추가적인 Style를 설정할때에 유용하다.
+    여러 요소에 속성 값 집합을 적용하는 방법으로 FrameworkElement 또는 FramworkContentElement에서 파생되는 모든 컨트롤에 스타일을 적용할 수 있다.
+    스타일은 리소스이므로 모든 리소스에 적용되는 동일한 범위 지정규칙을 따른다. 
+    (전역 리소스에 스타일 지정시 해당 리소스를 사용하는 모든 부분에 스타일이 적용됨. 단, x:Key 속성으로 정의된 스타일은 직접 참조 시켜야함.)
+    마우스 오른쪽 버튼 클릭 > 스타일 편집 > 복사본 편집 또는 빈 항목 만들기로 스타일 자동생성도 가능하다.
+
+- WPF 템플릿
+    컨트롤의 데이터, 모양등의 구조를 정의한다.
+    스타일이나 컨트롤 속성에서 등록 또는 재정의 하여 사용한다.
+    완전히 새로운 Control을 만들어야 하는 경우는 UserControl 또는 CustomControl을 사용하고, 시각적 구조만을 수정할때 주로 사용한다.
+
+    1) ControlTemplate
+        모양과 동작의 시각적 구조 정의
+
+    2) ItemsPanelTemplate
+        ItemsControl의 항목들의 레이아웃 정의
+
+    3) DataTemplate 
+        데이터의 시각적 구조 정의
+
+    4) HierarchicalDataTemplate
+        HederedItemsControl에서 파생된 데이터(ex. TreeViewItem)를 표시하는 경우 사용한다.
+          (A 클래스 내의 속성이 List<B>가 존재하는 경우 데이터의 시각적 구조를 정의할 수 있다.)
+
+    
+-  WPF 트리거(스타일의 조건부 속성 설정)
+    1) (Property)Trigger
+        대상 요소의 특정 속성을 설정 가능
+
+    2) DataTrigger
+        데이터 바인딩된 속성의 값에따라 요소의 여러 속성을 설정 가능
 
 
-- Template의 종류
-    1) DataTemplate : 데이터의 시각적 구조 정의
-    2) ControlTemplate : 컨트롤의 모양과 동작 정의
-    3) ItemsPanelTemplate : ItemsControl 항목들의 레이아웃 정의
+- ContentControl 또는 ItemsControl에서 파생된 컨트롤의 표시 방법
+    1) ContentPresenter
+        CotnentControl에서 파생된 Control의 표시
 
-
--  WPF 스타일의 조건부 속성 설정(Trigger)
-    1) DataTrigger : 데이터 바인딩된 속성의 값에따라 요소의 여러 속성을 설정 가능, 
-    2) (Property)Trigger : 대상 요소의 특정 속성만들 설정가능
+    2) ItemsPresenter 
+        ItemsControl에서 파생된 Control의 표시
 
 -  상위 컨트롤의 속성정보를 x:Name 정보 없이 가져오기 
     1) "{Binding RelativeSource={RelativeSource AncestorType={x:Type ToggleButton}}, Path=Foreground}"
-
-- Resource에 전역 변수 등록하여 사용 가능
-    1) namespace 추가 : xmlns:system="clr-namespace:System;assembly=mscorlib"
-    2) 리소스 등록 : <system:Double x:Key="hierarchyMinWith">240</system:Double>
-    3) 변수 사용 : MinWidth="{StaticResource hierarchyMinWith}"
