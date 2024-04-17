@@ -55,6 +55,8 @@
     4) ComboBox
         ComboBoxItem으로 구성된 텍스트 컬렉션
         
+- WPF ItemsControl
+
 
 - WPF 리소스
     리소스는 x:Key 속성으로 정의된 클래스를 참조해 데이터 재사용성을 높힌다.

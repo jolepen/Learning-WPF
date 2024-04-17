@@ -131,22 +131,20 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Border Background="Transparent">
-                    <CheckBox Content="CheckBox"
+                    <WrapPanel HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Top">
+                        <TextBlock Text="Sample TextBlock"/>
+                        <TextBox Style="{DynamicResource TextBoxStyle1}" Text="Sample TextBox" Background="Transparent"/>
+                        <Label Content="Label"/>
+                        <CheckBox Content="CheckBox"
                               Foreground="Red"
                               Background="Gainsboro"
                               BorderBrush="PaleVioletRed"
                               IsThreeState="True" 
                               FontSize="40">
-                        <CheckBox.LayoutTransform>
-                            <ScaleTransform ScaleX="1" ScaleY="1"/>
-                        </CheckBox.LayoutTransform>
-                    </CheckBox>
-                </Border>
-                <Border Grid.Column="1" Background="YellowGreen">
-                    <WrapPanel HorizontalAlignment="Left" Orientation="Vertical" VerticalAlignment="Top">
-                        <TextBlock Text="Sample TextBlock" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBox Style="{DynamicResource TextBoxStyle1}" Text="Sample TextBox" Background="Transparent"/>
-                        <Label Content="Label"/>
+                            <CheckBox.LayoutTransform>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </CheckBox.LayoutTransform>
+                        </CheckBox>
                         <ComboBox>
                             <ComboBoxItem Content="Combo1"/>
                             <ComboBoxItem Content="Combo2"/>
@@ -154,6 +152,9 @@
                             <ComboBoxItem Content="Combo4"/>
                         </ComboBox>
                     </WrapPanel>
+                </Border>
+                <Border Grid.Column="1" Background="YellowGreen">
+           
                 </Border>
                 <Rectangle Grid.Row="1" Fill="LightPink"/>
                 <Rectangle Grid.Row="1" Grid.Column="1" Fill="DarkOrange"/>

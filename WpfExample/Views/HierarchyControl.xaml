@@ -199,10 +199,11 @@
                           VerticalAlignment="Stretch"/>
             <ListBox x:Name="listBox" Grid.Column="2" Grid.Row="1" BorderBrush="Transparent">
                 <!--
-                1. Style을 통한 접근 
+                Style을 통한 접근 
                 -->
                 <ListBox.Style>
                     <Style TargetType="{x:Type ListBox}">
+                        <Setter Property="Background" Value="Black"/>
                         <Setter Property="ItemTemplate">
                             <Setter.Value>
                                 <DataTemplate DataType="{x:Type local:HierarchyInfo}">
@@ -233,37 +234,36 @@
                         </Setter>
                     </Style>
                 </ListBox.Style>
-                <!-- 
-                2. Template를 통한 접근
-                -->
-                <!--
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Name}"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-                -->
-
-                <!-- 
-                ListBoxItem은 Content Control로 이루어져 있기때문에 ContentTemplate을 사용한다.
-                <ListBoxItem Content="Sample List Box Item">
-                    <ListBoxItem.ContentTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{TemplateBinding Content}"/>
-                        </DataTemplate>
-                    </ListBoxItem.ContentTemplate>
-                </ListBoxItem>
-                -->
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border Background="{TemplateBinding Background}" 
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="1"
+                                            Margin="4">
+                                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                            <ContentPresenter/>
+                                        </Grid>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="AliceBlue" />
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="AliceBlue" />
+                                        </Trigger>
+                                        <Trigger Property="IsFocused" Value="True">
+                                            <Setter Property="Background" Value="AliceBlue" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers >
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
             </ListBox>
         </Grid>
     </Grid>
