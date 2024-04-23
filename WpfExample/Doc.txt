@@ -55,7 +55,18 @@
     4) ComboBox
         ComboBoxItem으로 구성된 텍스트 컬렉션
         
+
 - WPF ItemsControl
+    1) ListBox
+        선택 가능한 항목들에 대한 목록을 간결하게 출력한다. (편집 불가)
+        ItemsControl에서 파생된 컨트롤로 ItemSource 속성에 데이터 바인딩이 가능하다.
+        Items 속성에 ListBoxItem 객체를 할당 가능하다.
+        ItemTemplate를 이용해 바인딩한 객체의 값을 모두 출력하도록 커스텀 가능하다.
+
+    2) TreeView
+        축소 가능한 노드를 사용하여 계층구조로 정보를 표시한다.
+        ItemsControl에서 파생된 컨트롤로 TreeViewItem 컨트롤을 사용하여 항목을 중첩한다.
+        TreeViewItem 또한 ItemsControl에서 파생된 컨트롤로 항목을 중첩할 수 있다.
 
 
 - WPF 리소스
@@ -63,7 +74,6 @@
     어플리케이션 전역 또는 컨트롤 지역에서 모두 사용 가능하다.
     xaml에서 사용시 태그 확장 문법을 사용한다.
     Code-Behind에서도 Resource에 정의된 값을 x:Key값을 통해 참조할 수 있다.
-    클래스를 정의해 참조할 수 있다.
 
     1) Static Resource 
         컴파일 시에 로드되어 참조가 이루어지고 리소스의 변경을 관리하지 않는다.

@@ -72,10 +72,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
+        
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
         <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
         <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
-
         <Style x:Key="TextBoxStyle1" TargetType="{x:Type TextBox}">
             <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
             <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
@@ -117,6 +118,22 @@
                 </MultiTrigger>
             </Style.Triggers>
         </Style>
+
+        <Style x:Key="StaticResourceButton" TargetType="Button">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="Width" Value="160"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style x:Key="DynamicResourceButton" TargetType="Button" BasedOn="{StaticResource StaticResourceButton}">
+            <Setter Property="Background" Value="Pink"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Width" Value="160"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
     </UserControl.Resources>
 
     <TabControl>
@@ -153,19 +170,17 @@
                         </ComboBox>
                     </WrapPanel>
                 </Border>
-                <Border Grid.Column="1" Background="YellowGreen">
-           
-                </Border>
+                <Border Grid.Column="1" Background="YellowGreen"/>
                 <Rectangle Grid.Row="1" Fill="LightPink"/>
                 <Rectangle Grid.Row="1" Grid.Column="1" Fill="DarkOrange"/>
             </Grid>
         </TabItem>
         <TabItem Header="StackPanel">
             <StackPanel Orientation="Horizontal">
-                <Button Content="Button1"/>
-                <Button Content="Button2"/>
-                <Button Content="Button3"/>
-                <Button Content="Button4"/>
+                <Button Content="Static Resource Button" Style="{StaticResource StaticResourceButton}"/>
+                <Button Content="Dynamic Resource Button" Style="{DynamicResource DynamicResourceButton}"/>
+                <Button Content="Other Button" Margin="5" Width="160"/>
+                <Button Content="Other Button" Margin="5" Width="160"/>
             </StackPanel>
         </TabItem>
         <TabItem Header="WrapPanel">
