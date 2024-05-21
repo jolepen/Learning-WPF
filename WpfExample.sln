@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfExample", "WpfExample\WpfExample.csproj", "{9E8BAE4B-8D63-4454-9318-6548B76727D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfExample", "WpfExample\WpfExample.csproj", "{9E8BAE4B-8D63-4454-9318-6548B76727D1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfExampleForToolkit", "WpfExampleForToolkit\WpfExampleForToolkit.csproj", "{9830E42F-42C6-4085-AADE-E85491B0F47E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9E8BAE4B-8D63-4454-9318-6548B76727D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E8BAE4B-8D63-4454-9318-6548B76727D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E8BAE4B-8D63-4454-9318-6548B76727D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9830E42F-42C6-4085-AADE-E85491B0F47E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9830E42F-42C6-4085-AADE-E85491B0F47E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9830E42F-42C6-4085-AADE-E85491B0F47E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9830E42F-42C6-4085-AADE-E85491B0F47E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
