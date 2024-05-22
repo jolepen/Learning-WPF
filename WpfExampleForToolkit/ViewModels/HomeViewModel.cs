@@ -14,6 +14,16 @@ namespace WpfExampleForToolkit.ViewModels
     {
         public static int Count { get; set; }
 
+        private decimal _price;
+        /// <summary>
+        /// 가격
+        /// </summary>
+        public decimal Price
+        {
+            get { return _price; }
+            set { SetProperty(ref _price, value); }
+        }
+
         public ICommand BusyTestCommand { get; set; }
 
         public ICommand LayoutPopupTestCommand { get; set; }
@@ -28,6 +38,8 @@ namespace WpfExampleForToolkit.ViewModels
         {
             this.BusyTestCommand = new AsyncRelayCommand(OnBusyTestAsync);
             this.LayoutPopupTestCommand = new RelayCommand(OnLayerPopupTest);
+
+            Price = 12345678;
         }
 
         /// <summary>

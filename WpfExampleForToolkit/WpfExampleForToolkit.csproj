@@ -18,4 +18,8 @@
     <Folder Include="Themes\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WpfExampleForToolkit.CusmtomControl\WpfExampleForToolkit.CustomControl.csproj" />
+  </ItemGroup>
+
 </Project>
