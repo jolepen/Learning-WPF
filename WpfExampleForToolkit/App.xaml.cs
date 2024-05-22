@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
+using WpfExampleForToolkit.Controls;
 using WpfExampleForToolkit.ViewModels;
 
 namespace WpfExampleForToolkit
@@ -36,6 +37,7 @@ namespace WpfExampleForToolkit
             services.AddTransient(typeof(MainViewModel));
             services.AddTransient(typeof(HomeViewModel));
             services.AddTransient(typeof(CustomerViewModel));
+            services.AddTransient(typeof(AboutControl));
 
             return services.BuildServiceProvider();
         }

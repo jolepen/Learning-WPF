@@ -16,6 +16,7 @@ namespace WpfExampleForToolkit.ViewModels
 
         public ICommand BusyTestCommand { get; set; }
 
+        public ICommand LayoutPopupTestCommand { get; set; }
         public HomeViewModel()
         {
             Title = "Home";
@@ -26,6 +27,16 @@ namespace WpfExampleForToolkit.ViewModels
         private void Init()
         {
             this.BusyTestCommand = new AsyncRelayCommand(OnBusyTestAsync);
+            this.LayoutPopupTestCommand = new RelayCommand(OnLayerPopupTest);
+        }
+
+        /// <summary>
+        /// LayoutPopupCommand의 '비동기 함수' 실행
+        /// </summary>
+        /// <exception cref="NotImplementedException"></exception>
+        private void OnLayerPopupTest()
+        {
+            WeakReferenceMessenger.Default.Send(new LayerPopupMessage(true) { ControlName = "AboutControl" });
         }
 
         /// <summary>

@@ -13,6 +13,22 @@ namespace WpfExampleForToolkit.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
+        private bool _showLayerPopup;
+
+        public bool ShowLayerPopup
+        {
+            get { return this._showLayerPopup; }
+            set { SetProperty(ref this._showLayerPopup, value); }
+        }
+
+        private string _controlName;
+
+        public string ControlName
+        {
+            get { return this._controlName; }
+            set { SetProperty(ref this._controlName, value); }
+        }
+
         /// <summary>
         /// Busy 목록
         /// </summary>
@@ -62,6 +78,14 @@ namespace WpfExampleForToolkit.ViewModels
 
             //MainViewModel - HomeViewModel 간의 Busy 메세지 수신을 위한 등록
             WeakReferenceMessenger.Default.Register<BusyMessage>(this, OnBusyMessage);
+
+            WeakReferenceMessenger.Default.Register<LayerPopupMessage>(this, OnLayerPopupMessage);
+        }
+
+        private void OnLayerPopupMessage(object recipient, LayerPopupMessage message)
+        {
+            ShowLayerPopup = message.Value;
+            ControlName = message.ControlName;
         }
 
         /// <summary>
