@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using WpfExampleForToolkit.Services;
 
 namespace WpfExampleForToolkit.ViewModels
 {
@@ -14,8 +15,10 @@ namespace WpfExampleForToolkit.ViewModels
     {
         public ICommand BackCommand { get; set; }
 
-        public CustomerViewModel()
+        private readonly IDatabaseService _dbService;
+        public CustomerViewModel(IDatabaseService databaseService)
         {
+            this._dbService = databaseService;
             Init();
         }
 
