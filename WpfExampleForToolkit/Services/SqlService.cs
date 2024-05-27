@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WpfExampleForToolkit.Services
 {
-    internal class SqlService : DatabaseService
+    public class SqlService : DatabaseService
     {
         public SqlService(string connectionString) : base(connectionString)
         {

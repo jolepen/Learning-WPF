@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace WpfExampleForToolkit.Services
 {
-    internal abstract class DatabaseService : IDatabaseService
+    public abstract class DatabaseService : IDatabaseService
     {
         private string _connectionString;
         public string ConnectionString => this._connectionString;
@@ -18,7 +18,7 @@ namespace WpfExampleForToolkit.Services
 
         protected DbCommand Command { get; set; }
 
-        protected DatabaseService(string connectionString)
+        public DatabaseService(string connectionString)
         {
             this._connectionString = connectionString;
         }

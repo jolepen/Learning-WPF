@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfExampleForToolkit.Services
 {
-    internal interface IDatabaseService
+    public interface IDatabaseService
     {
         string ConnectionString { get; }
         /// <summary>

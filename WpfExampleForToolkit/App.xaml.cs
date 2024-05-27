@@ -40,10 +40,11 @@ namespace WpfExampleForToolkit
             services.AddTransient(typeof(CustomerViewModel));
             services.AddTransient(typeof(AboutControl));
 
+            var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False";
 
-            var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            var additional = ";TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             //IDatabaseService 싱글톤 등록
-            services.AddSingleton<IDatabaseService, SqlService>(obj => new SqlService(connectionString));
+            services.AddSingleton<IDatabaseService, SqlService>(obj => new SqlService(connectionString + additional));
             return services.BuildServiceProvider();
         }
     }
